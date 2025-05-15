@@ -139,8 +139,11 @@ export default function Header() {
                   </div>
                 ))}
                 <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-2 md:ml-2">
+                 <Link href="https://forms.zohopublic.in/saneevdas061995gm1/form/ReviewerRequestForm/formperma/mJGeeXTvBB656ZOOzWxFvXH4kLheJXg6rDNAI6myrsQ?zf_rszfm=1">
                   <Button className="bg-primary hover:bg-primary-600 text-white">Register Now</Button>
+               </Link>
                 </div>
+                
               </div>
             </nav>
 
