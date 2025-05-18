@@ -83,18 +83,14 @@ export default function CallToAction() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="https://forms.zohopublic.in/saneevdas061995gm1/form/ReviewerRequestForm/formperma/mJGeeXTvBB656ZOOzWxFvXH4kLheJXg6rDNAI6myrsQ?zf_rszfm=1" >
-            <Button
-              size="lg"
-              className="bg-white hover:bg-blue-50 text-primary px-8 rounded-full group transition-all duration-300"
-            >
-              Register Now
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-             </Link>
-            <Link href="/call-for-papers">
+             <Link href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FResGenXAI2025">
               <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white/20 rounded-full">
-                View Call for Papers
+                Be an Author
+              </Button>
+            </Link>
+            <Link href="https://forms.zohopublic.in/saneevdas061995gm1/form/ReviewerRequestForm/formperma/mJGeeXTvBB656ZOOzWxFvXH4kLheJXg6rDNAI6myrsQ?zf_rszfm=1">
+              <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white/20 rounded-full">
+                Be a Reviewer
               </Button>
             </Link>
           </div>

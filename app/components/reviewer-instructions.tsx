@@ -33,7 +33,7 @@ export default function Registration() {
                 href="https://forms.zohopublic.in/saneevdas061995gm1/form/ReviewerRequestForm/formperma/mJGeeXTvBB656ZOOzWxFvXH4kLheJXg6rDNAI6myrsQ?zf_rszfm=1" 
                 className="inline-block bg-primary hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 group"
               >
-                Register Now
+                Be a Reviewer
                 <ArrowRight className="ml-2 h-4 w-4 inline group-hover:translate-x-1 transition-transform" />
               </a>
             </div>

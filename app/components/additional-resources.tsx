@@ -36,11 +36,7 @@ export default function AdditionalResources() {
             <div className="bg-blue-50 p-6 rounded-xl my-8">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Paper Submission</h3>
               <p>
-                To submit your article{" "}
-                <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FResGenXAI2025" className="text-primary hover:text-primary/80 font-medium">
-                  Click Here
-                </a>
-                . The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This
+                The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This
                 service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud
                 services as well as for software development and support.
               </p>

@@ -82,9 +82,7 @@ export default function VenueInfo() {
                     Conference Hours
                   </h4>
                   <p className="text-gray-600">
-                    September 10-12, 2025
-                    <br />
-                    9:00 AM - 5:00 PM daily
+                    Will be available soon.
                   </p>
 
                   <h4 className="font-bold text-gray-900 mt-4 flex items-center">

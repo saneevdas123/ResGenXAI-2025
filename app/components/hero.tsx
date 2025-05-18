@@ -164,7 +164,7 @@ export default function Hero() {
 
             <p className="text-lg md:text-xl text-orange-100 leading-relaxed max-w-xl">
               Advancing AI with Responsibility, Creativity, and Transparency
-              <span className="block mt-2">September 10 - September 12, 2025 | Bhubaneswar, Odisha</span>
+              
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -177,9 +177,11 @@ export default function Hero() {
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
+              <Link href="https://conferences.ieee.org/conferences_events/conferences/conferencedetails/64788">
               <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white/20 rounded-full">
                 Learn More
               </Button>
+              </Link>
             </div>
           </div>
 

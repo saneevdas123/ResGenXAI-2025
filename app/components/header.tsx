@@ -29,7 +29,11 @@ export default function Header() {
         { name: "Reviewer Guidelines", href: "/reviewer-guidelines" },
       ],
     },
-    { name: "Attend", href: "/attend" },
+    { name: "Attend", href: "#",
+      submenu: [
+        { name: "Agenda", href: "/agenda" },
+        { name: "Code of Conduct", href: "/attend" },
+      ], },
     { name: "Committees", href: "/committees" },
     { name: "Sight Seeing", href: "/sight-seeing" },
   ]
@@ -87,7 +91,7 @@ export default function Header() {
                 <h2 className="text-sm md:text-base font-bold text-gray-900">
                   International Conference on Responsible, Generative and Explainable AI
                 </h2>
-                <p className="text-xs text-gray-600">September 10-12, 2025 | Bhubaneswar, Odisha</p>
+              
               </div>
             </div>
 
@@ -139,8 +143,8 @@ export default function Header() {
                   </div>
                 ))}
                 <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-2 md:ml-2">
-                 <Link href="https://forms.zohopublic.in/saneevdas061995gm1/form/ReviewerRequestForm/formperma/mJGeeXTvBB656ZOOzWxFvXH4kLheJXg6rDNAI6myrsQ?zf_rszfm=1">
-                  <Button className="bg-primary hover:bg-primary-600 text-white">Register Now</Button>
+                 <Link href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FResGenXAI2025">
+                  <Button className="bg-primary hover:bg-primary-600 text-white">Submit Paper</Button>
                </Link>
                 </div>
                 
