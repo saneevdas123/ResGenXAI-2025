@@ -135,7 +135,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="min-h-screen pt-32 relative overflow-hidden bg-gradient-to-br from-primary-900 to-secondary-900">
+    <section className="min-h-screen -mt-32 pt-32 relative overflow-hidden bg-gradient-to-br from-primary-900 to-secondary-900">
       {/* Pattachitra-inspired pattern overlay */}
       <div className="absolute inset-0 odisha-pattern opacity-10"></div>
 
