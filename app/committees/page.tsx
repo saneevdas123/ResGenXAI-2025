@@ -11,6 +11,8 @@ export default function CommitteesPage() {
       <Header />
       <CommitteesHero />
       <Patrons />
+      <OrganizingCommittee/>
+      <TechnicalCommittee/>
       <Footer />
     </main>
   )

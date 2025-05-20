@@ -1,7 +1,6 @@
 "use client"
 
 import { useInView } from "react-intersection-observer"
-import Image from "next/image"
 import { Users } from "lucide-react"
 
 export default function OrganizingCommittee() {
@@ -12,40 +11,34 @@ export default function OrganizingCommittee() {
 
   const committeeMembers = [
     {
+      name: "Prof. Dr. Sujata Chakravarty",
+      role: "Organizing Chair",
+      affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
+    },
+    {
+      name: "Dr. Debi Prosad Dogra",
+      role: "Organizing Chair",
+      affiliation: "IIT Bhubaneswar, Odisha, India",
+    },
+    {
+      name: "Saneev Kumar Das",
+      role: "Organizing Secretary",
+      affiliation: "Centurion University of Technology and Management, Bhubaneswar",
+    },
+    {
+      name: "Sujit Bebort Ta",
+      role: "Organizing Secretary",
+      affiliation: "Ravenshaw University, Cuttack, Odisha, India",
+    },
+    {
       name: "Prof. Sanjay Kumar Jena",
       role: "General Chair",
       affiliation: "Centurion University of Technology and Management",
-      image: "/placeholder.svg?height=200&width=200",
     },
     {
       name: "Prof. Debabrata Swain",
       role: "Program Chair",
       affiliation: "Centurion University of Technology and Management",
-      image: "/placeholder.svg?height=200&width=200",
-    },
-    {
-      name: "Dr. Amiya Kumar Dash",
-      role: "Publication Chair",
-      affiliation: "Centurion University of Technology and Management",
-      image: "/placeholder.svg?height=200&width=200",
-    },
-    {
-      name: "Dr. Satyabrata Dash",
-      role: "Finance Chair",
-      affiliation: "Centurion University of Technology and Management",
-      image: "/placeholder.svg?height=200&width=200",
-    },
-    {
-      name: "Dr. Sujata Dash",
-      role: "Publicity Chair",
-      affiliation: "Centurion University of Technology and Management",
-      image: "/placeholder.svg?height=200&width=200",
-    },
-    {
-      name: "Dr. Subhashree Mishra",
-      role: "Registration Chair",
-      affiliation: "Centurion University of Technology and Management",
-      image: "/placeholder.svg?height=200&width=200",
     },
   ]
 
@@ -79,40 +72,12 @@ export default function OrganizingCommittee() {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="p-6 flex flex-col items-center text-center">
-                  <div className="relative w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-primary/20">
-                    <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
-                  </div>
                   <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
                   <p className="text-primary font-medium">{member.role}</p>
                   <p className="text-gray-600 text-sm mt-1">{member.affiliation}</p>
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-16 bg-white rounded-xl p-8 shadow-lg border border-primary/10 pattachitra-border">
-            <h3 className="text-xl font-bold text-gray-900 mb-6">Local Organizing Committee</h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                "Dr. Rajesh Kumar Sahoo",
-                "Dr. Sasmita Mishra",
-                "Dr. Srikanta Patnaik",
-                "Dr. Prasant Kumar Pattnaik",
-                "Dr. Sujata Mohanty",
-                "Dr. Biswajit Sahoo",
-                "Dr. Sujit Kumar Dash",
-                "Dr. Sanjay Kumar Padhi",
-                "Dr. Sanjay Kumar Sahoo",
-              ].map((name, index) => (
-                <div
-                  key={index}
-                  className="bg-orange-50 rounded-lg p-4 hover:bg-orange-100 transition-colors duration-300"
-                >
-                  <p className="text-gray-800">{name}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
