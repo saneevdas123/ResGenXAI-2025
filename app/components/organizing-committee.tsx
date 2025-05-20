@@ -11,7 +11,7 @@ export default function OrganizingCommittee() {
 
   const committeeMembers = [
     {
-      name: "Prof. Dr. Sujata Chakravarty",
+      name: "Prof.(Dr.) Sujata Chakravarty",
       role: "Organizing Chair",
       affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
     },
