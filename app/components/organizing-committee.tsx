@@ -23,22 +23,22 @@ export default function OrganizingCommittee() {
     {
       name: "Saneev Kumar Das",
       role: "Organizing Secretary",
-      affiliation: "Centurion University of Technology and Management, Bhubaneswar",
+      affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
     },
     {
-      name: "Sujit Bebort Ta",
+      name: "Sujit Bebortta",
       role: "Organizing Secretary",
       affiliation: "Ravenshaw University, Cuttack, Odisha, India",
     },
     {
       name: "Prof. Sanjay Kumar Jena",
       role: "General Chair",
-      affiliation: "Centurion University of Technology and Management",
+      affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
     },
     {
       name: "Prof. Debabrata Swain",
       role: "Program Chair",
-      affiliation: "Centurion University of Technology and Management",
+      affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
     },
   ]
 
