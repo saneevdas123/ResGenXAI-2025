@@ -12,12 +12,12 @@ export default function OrganizingCommittee() {
   const committeeMembers = [
     {
       name: "Prof.(Dr.) Sujata Chakravarty",
-      role: "Organizing Chair",
+      role: "General Chair",
       affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
     },
     {
       name: "Dr. Debi Prosad Dogra",
-      role: "Organizing Chair",
+      role: "General Chair",
       affiliation: "IIT Bhubaneswar, Odisha, India",
     },
     {
@@ -29,16 +29,6 @@ export default function OrganizingCommittee() {
       name: "Sujit Bebortta",
       role: "Organizing Secretary",
       affiliation: "Ravenshaw University, Cuttack, Odisha, India",
-    },
-    {
-      name: "Prof. Sanjay Kumar Jena",
-      role: "General Chair",
-      affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
-    },
-    {
-      name: "Prof. Debabrata Swain",
-      role: "Program Chair",
-      affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
     },
   ]
 
