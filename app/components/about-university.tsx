@@ -46,16 +46,16 @@ export default function AboutUniversity() {
               inView ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
             }`}
           >
-            <h3 className="text-2xl font-bold text-gray-900">
+            <h3 className="text-2xl font-bold  justify-center text-gray-900">
               Shaping lives and empowering communities through education
             </h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600  justify-center leading-relaxed">
               Centurion University of Technology and Management (CUTM), located in Jatni near Bhubaneswar, Odisha, was
               established in 2005 by a group of academics aiming to provide high-quality education. Initially acquiring
               and transforming the ailing Jagannath Institute for Technology and Management (JITM), CUTM became the
               first Multi-Sector State Private University in Odisha in August 2010.
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 justify-center leading-relaxed">
               The university focuses on "Shaping lives and empowering communities" by creating opportunities through
               education, research, and training, especially in rural areas of southern Odisha and northern Andhra
               Pradesh. With a vision to become a globally recognized center for excellence, CUTM's mission is to offer

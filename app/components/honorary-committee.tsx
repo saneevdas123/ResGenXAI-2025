@@ -81,7 +81,7 @@ export default function HonoraryCommittee() {
     affiliation: "NIT Rourkela, Odisha, India",
   },
   {
-    name: "Prof.(Dr.) Amiya Kumar Ratha",
+    name: "Prof.(Dr.) Amiya Kumar Rath",
     role: "Honorary Advisory",
     affiliation: "B.P.U.T., Rourkela, Odisha, India",
   },
