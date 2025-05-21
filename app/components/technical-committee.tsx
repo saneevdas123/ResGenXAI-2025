@@ -1,7 +1,7 @@
 "use client"
 
 import { useInView } from "react-intersection-observer"
-import { Cpu, Mail, Building } from "lucide-react"
+import { Cpu, Building } from "lucide-react"
 import { useEffect, useState } from "react"
 
 export default function TechnicalCommittee() {
@@ -11,7 +11,6 @@ export default function TechnicalCommittee() {
   })
   const [isVisible, setIsVisible] = useState(false)
 
-  // Fallback to show content after 3 seconds if Intersection Observer fails
   useEffect(() => {
     console.log("TechnicalCommittee mounted")
     const timer = setTimeout(() => setIsVisible(true), 3000)
@@ -363,10 +362,7 @@ export default function TechnicalCommittee() {
                     <p className="text-gray-700 text-sm">{member.affiliation}</p>
                   </div>
                   <div className="flex items-start gap-2">
-                    <Mail className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <a href={`mailto:${member.email}`} className="text-gray-700 text-sm hover:underline">
-                      {member.email}
-                    </a>
+                   
                   </div>
                 </div>
                 <div className="border-2 border-primary/10 absolute inset-0 rounded-xl pointer-events-none"></div>
