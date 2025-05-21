@@ -2,12 +2,21 @@
 
 import { useInView } from "react-intersection-observer"
 import { Cpu, Mail, Building } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function TechnicalCommittee() {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+  const [isVisible, setIsVisible] = useState(false)
+
+  // Fallback to show content after 3 seconds if Intersection Observer fails
+  useEffect(() => {
+    console.log("TechnicalCommittee mounted")
+    const timer = setTimeout(() => setIsVisible(true), 3000)
+    return () => clearTimeout(timer)
+  }, [])
 
   const internationalTpcMembers = [
     {
@@ -318,11 +327,11 @@ export default function TechnicalCommittee() {
   ]
 
   return (
-    <section className="py-16 bg-white" ref={ref}>
-      <div className="container mx-auto px-4">
+    <section className="py-16 bg-white overflow-x-hidden" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={`max-w-6xl mx-auto transition-all duration-1000 transform ${
-            inView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            inView || isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
           <div className="relative mb-12">
@@ -337,12 +346,12 @@ export default function TechnicalCommittee() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-w-0">
             {internationalTpcMembers.map((member, index) => (
               <div
                 key={index}
                 className={`bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${
-                  inView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                  inView || isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                 }`}
                 style={{ transitionDelay: `${index * 20}ms` }}
               >
@@ -354,8 +363,10 @@ export default function TechnicalCommittee() {
                     <p className="text-gray-700 text-sm">{member.affiliation}</p>
                   </div>
                   <div className="flex items-start gap-2">
-                    
-                    
+                    <Mail className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                    <a href={`mailto:${member.email}`} className="text-gray-700 text-sm hover:underline">
+                      {member.email}
+                    </a>
                   </div>
                 </div>
                 <div className="border-2 border-primary/10 absolute inset-0 rounded-xl pointer-events-none"></div>
@@ -368,6 +379,11 @@ export default function TechnicalCommittee() {
           </div>
         </div>
       </div>
+      <noscript>
+        <style>
+          {`.opacity-0 { opacity: 1 !important; transform: none !important; }`}
+        </style>
+      </noscript>
     </section>
   )
 }
