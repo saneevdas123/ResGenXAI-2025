@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     siteName: "ResGenXAI 2025",
     images: [
       {
-        url: "/rs.png",
+        url: "/favicon.png",
         width: 1200,
         height: 630,
         alt: "ResGenXAI 2025 Conference Logo",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ResGenXAI 2025 - International Conference on Responsible, Generative and Explainable AI",
     description: "International Conference on Responsible, Generative and Explainable AI, September 10-12, 2025 in Bhubaneswar, Odisha",
-    images: ["/rs.png"],
+    images: ["/favicon.png"],
     creator: "@resgenxai",
     site: "@resgenxai",
   },
@@ -141,7 +141,7 @@ const jsonLd = {
       "addressCountry": "IN"
     }
   },
-  "image": ["https://www.resgenxai.co.in/rs.png"],
+  "image": ["https://www.resgenxai.co.in/favicon.png"],
   "organizer": {
     "@type": "Organization",
     "name": "Centurion University of Technology and Management",
@@ -165,7 +165,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   "name": "ResGenXAI 2025",
   "url": "https://www.resgenxai.co.in",
-  "logo": "https://www.resgenxai.co.in/rs.png",
+  "logo": "https://www.resgenxai.co.in/favicon.png",
   "sameAs": ["https://www.cutm.ac.in"],
   "contactPoint": {
     "@type": "ContactPoint",

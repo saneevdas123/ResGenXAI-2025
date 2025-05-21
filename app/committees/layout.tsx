@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "https://www.resgenxai.co.in/committees",
     images: [
       {
-        url: "/rs.png",
+        url: "/favicon.png",
         width: 1200,
         height: 630,
         alt: "ResGenXAI 2025 Conference Committees",

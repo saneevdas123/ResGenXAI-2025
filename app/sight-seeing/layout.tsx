@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "https://www.resgenxai.co.in/sight-seeing",
     images: [
       {
-        url: "/rs.png",
+        url: "/favicon.png",
         width: 1200,
         height: 630,
         alt: "Tourist Attractions in Odisha",
