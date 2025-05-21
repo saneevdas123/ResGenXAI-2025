@@ -4,6 +4,7 @@ import CommitteesHero from "../components/committees-hero"
 import Patrons from "../components/patrons"
 import OrganizingCommittee from "../components/organizing-committee"
 import TechnicalCommittee from "../components/technical-committee"
+import HonoraryCommittee from "../components/honorary-committee"
 
 export default function CommitteesPage() {
   return (
@@ -11,6 +12,7 @@ export default function CommitteesPage() {
       <Header />
       <CommitteesHero />
       <Patrons />
+      <HonoraryCommittee/>
       <OrganizingCommittee/>
       <TechnicalCommittee/>
       <Footer />

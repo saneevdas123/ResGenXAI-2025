@@ -337,7 +337,7 @@ export default function TechnicalCommittee() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
             {internationalTpcMembers.map((member, index) => (
               <div
                 key={index}
@@ -354,8 +354,8 @@ export default function TechnicalCommittee() {
                     <p className="text-gray-700 text-sm">{member.affiliation}</p>
                   </div>
                   <div className="flex items-start gap-2">
-                    <Mail className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <p className="text-primary text-sm break-all">{member.email}</p>
+                    
+                    
                   </div>
                 </div>
                 <div className="border-2 border-primary/10 absolute inset-0 rounded-xl pointer-events-none"></div>
