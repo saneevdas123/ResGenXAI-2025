@@ -6,6 +6,13 @@ import OrganizingCommittee from "../components/organizing-committee"
 import TechnicalCommittee from "../components/technical-committee"
 import HonoraryCommittee from "../components/honorary-committee"
 import Publicity from "../components/publicity"
+import Panel from "../components/panel"
+import Finance from "../components/finance"
+import Keynote from "../components/keynote"
+import Sponsorship from "../components/sponsorship"
+import Publication from "../components/publication"
+import Conference from "../components/conference-planning"
+import Local from "../components/local-organizing"
 
 export default function CommitteesPage() {
   return (
@@ -15,7 +22,14 @@ export default function CommitteesPage() {
       <Patrons />
       <HonoraryCommittee/>
       <OrganizingCommittee/>
+      <Panel/>
+      <Finance/>
       <Publicity/>
+      <Keynote/>
+      <Sponsorship/>
+      <Publication/>
+      <Conference/>
+      <Local/>
       <TechnicalCommittee/>
       <Footer />
     </main>

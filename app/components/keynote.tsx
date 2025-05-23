@@ -1,20 +1,19 @@
 "use client"
 
 import { useInView } from "react-intersection-observer"
-import { Newspaper } from "lucide-react"
+import { Key } from "lucide-react"
 
-export default function Publicity() {
+export default function Keynote() {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
 
 const committeeMembers = [
-  {
-    name: "Prof.(Dr.) Ramesh Chandra Mohanty",
-    role: "Publicity Chair",
-    affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
-  },
+  { "name": "Prof. Rajendra Kumar Khadanga", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. Nimay Chandra Giri", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. Chinmayee Dora", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. Swarnaprabha Jena", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" }
 ];
 
 
@@ -32,13 +31,13 @@ const committeeMembers = [
             </div>
             <div className="relative flex justify-center">
               <span className="bg-orange-50 px-6 text-2xl font-bold text-primary flex items-center">
-                <Newspaper className="w-6 h-6 mr-2" />
-                Publicity Commitee
+                <Key className="w-6 h-6 mr-2" />
+                Keynote Commitee
               </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-1  lg:grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-2 gap-8">
             {committeeMembers.map((member, index) => (
               <div
                 key={index}
