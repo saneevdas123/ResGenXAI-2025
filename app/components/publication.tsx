@@ -16,6 +16,7 @@ const committeeMembers = [
   { "name": "Prof. Manohar Mishra", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Sujit Bebortta", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Saneev Kumar Das", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. Satyananda Swain", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Chandra Sekhar Dash", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" }
 ];
 
