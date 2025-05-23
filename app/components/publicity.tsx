@@ -11,9 +11,29 @@ export default function Publicity() {
 
 const committeeMembers = [
   {
+    name: "Prof.(Dr.) Chiranji Lal Chowdhary",
+    role: "Publicity Chair",
+    affiliation: "Vellore Institute of Technology, Vellore, India",
+  },
+  {
     name: "Prof.(Dr.) Ramesh Chandra Mohanty",
     role: "Publicity Chair",
     affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
+  },
+  {
+    name: "Dr. Subhranshu Sekhar Tripathy",
+    role: "Publicity Chair",
+    affiliation: "KIIT Deemed to be University, Bhubaneswar, Odisha, India",
+  },
+  {
+    name: "Dr. Vandana Sharma",
+    role: "Publicity Chair",
+    affiliation: "CHRIST (Deemed to be University), Delhi-NCR, India",
+  },
+  {
+    name: "Dr. Niranjan Ray",
+    role: "Publicity Chair",
+    affiliation: "KIIT Deemed to be University, Bhubaneswar, Odisha, India",
   },
 ];
 
@@ -38,7 +58,7 @@ const committeeMembers = [
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-1  lg:grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-2 gap-8">
             {committeeMembers.map((member, index) => (
               <div
                 key={index}
@@ -49,6 +69,7 @@ const committeeMembers = [
               >
                 <div className="p-6 flex flex-col items-center text-center">
                   <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
+                  <p className="text-primary font-medium">{member.role}</p>
                   <p className="text-gray-600 text-sm mt-1">{member.affiliation}</p>
                 </div>
               </div>
