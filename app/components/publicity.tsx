@@ -69,7 +69,6 @@ const committeeMembers = [
               >
                 <div className="p-6 flex flex-col items-center text-center">
                   <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-primary font-medium">{member.role}</p>
                   <p className="text-gray-600 text-sm mt-1">{member.affiliation}</p>
                 </div>
               </div>
