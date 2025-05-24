@@ -13,7 +13,10 @@ const committeeMembers = [
   { "name": "Prof. Puspanjali Mohapatra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Ranjeeta Patel", "affiliation": "KIIT Deemed to be University, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Umamani Subudhi", "affiliation": "KIIT Deemed to be University, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. Bharati Mishra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" }
+  { "name": "Prof. Bharati Mishra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. Renu Sharma", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. Satyabrata Dash", "affiliation": "GITAM University, A.P., India" }
+
 ];
 
 

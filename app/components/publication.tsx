@@ -11,6 +11,7 @@ export default function Publication() {
 
 const committeeMembers = [
   { "name": "Prof. Chinmay Panigrahi", "affiliation": "KIIT Deemed to be University, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. Satyasis Mishra", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Tanmoy Roy Choudhury", "affiliation": "NIT, Rourkela, Odisha, India" },
   { "name": "Prof. Manoj Debanath", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Manohar Mishra", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
