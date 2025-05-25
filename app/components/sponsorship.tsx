@@ -10,10 +10,10 @@ export default function Sponsorship() {
   })
 
 const committeeMembers = [
-  { "name": "Prof. Arundhati Biswal", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. (Dr.) Arundhati Biswal", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
   { "name": "Shri Debasish Panda", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
   { "name": "Shri Sukanta Parida", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. Harish Chandra Mohanta", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. (Dr.) Harish Chandra Mohanta", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Rajkumar Mohanta", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" }
 ];
 
