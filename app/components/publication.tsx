@@ -15,7 +15,7 @@ const committeeMembers = [
   { "name": "Prof. Tanmoy Roy Choudhury", "affiliation": "NIT, Rourkela, Odisha, India" },
   { "name": "Prof. Manoj Debanath", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Manohar Mishra", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. Sujit Bebortta", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. Sujit Bebortta", "affiliation": "Ravenshaw University, Cuttack, Odisha, India" },
   { "name": "Prof. Saneev Kumar Das", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Satyananda Swain", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Chandra Sekhar Dash", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" }
