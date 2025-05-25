@@ -10,28 +10,28 @@ export default function Local() {
   })
 
 const committeeMembers = [
-  { "name": "Prof. Nagesh Kolagani", "affiliation": "CUTM, A.P." },
-  { "name": "Prof. Sasmita Kumari Nayak", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Prof. Sunil Kumar Mohapatra", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Prof. Dhawaleswar Rao Ch.", "affiliation": "CUTM, Parlakhemundi" },
-  { "name": "Prof. Debendra Kumar Sahoo", "affiliation": "CUTM, Parlakhemundi" },
-  { "name": "Prof. Prafulla Kumar Panda", "affiliation": "CUTM, Parlakhemundi" },
-  { "name": "Prof. P.A. Sunny Dayal", "affiliation": "CUTM, A.P." },
-  { "name": "Prof. Ashok Mishra", "affiliation": "CUTM, Parlakhemundi" },
-  { "name": "Prof. Kamal Kumar Barik", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Prof. Sunita Routray", "affiliation": "CUTM, Bhubaneswar" },
+  { "name": "Prof. (Dr.) Nagesh Kolagani", "affiliation": "CUTM, A.P." },
+  { "name": "Prof. (Dr.) Sasmita Kumari Nayak", "affiliation": "CUTM, Bhubaneswar" },
+  { "name": "Prof. (Dr.) Sunil Kumar Mohapatra", "affiliation": "CUTM, Bhubaneswar" },
+  { "name": "Prof. (Dr.) Dhawaleswar Rao Ch.", "affiliation": "CUTM, Parlakhemundi" },
+  { "name": "Prof. (Dr.) Debendra Kumar Sahoo", "affiliation": "CUTM, Parlakhemundi" },
+  { "name": "Prof. (Dr.) Prafulla Kumar Panda", "affiliation": "CUTM, Parlakhemundi" },
+  { "name": "Prof. (Dr.) P.A. Sunny Dayal", "affiliation": "CUTM, A.P." },
+  { "name": "Prof. (Dr.) Ashok Mishra", "affiliation": "CUTM, Parlakhemundi" },
+  { "name": "Prof. (Dr.) Kamal Kumar Barik", "affiliation": "CUTM, Bhubaneswar" },
+  { "name": "Prof. (Dr.) Sunita Routray", "affiliation": "CUTM, Bhubaneswar" },
   { "name": "Prof. Debasish Swapnesh Kumar Nayak", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. Biranchi Narayan Mishra", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Prof. Amit Kumar Sahoo", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Prof. Jyoti Prakash Giri", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Prof. Manas Ranjan Padhi", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Prof. Rakesh Kumar Behera", "affiliation": "CUTM, Bhubaneswar" },
+  { "name": "Prof. (Dr.) Biranchi Narayan Mishra", "affiliation": "CUTM, Bhubaneswar" },
+  { "name": "Prof. (Dr.) Amit Kumar Sahoo", "affiliation": "CUTM, Bhubaneswar" },
+  { "name": "Prof. (Dr.) Jyoti Prakash Giri", "affiliation": "CUTM, Bhubaneswar" },
+  { "name": "Prof. (Dr.) Manas Ranjan Padhi", "affiliation": "CUTM, Bhubaneswar" },
+  { "name": "Prof. (Dr.) Rakesh Kumar Behera", "affiliation": "CUTM, Bhubaneswar" },
   { "name": "Prof. Satyananda Swain", "affiliation": "CUTM, Bhubaneswar" },
   { "name": "Prof. Swarupa Pattnaik", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Prof. N V S Shankar", "affiliation": "CUTM, A.P." },
+  { "name": "Prof. (Dr.) N V S Shankar", "affiliation": "CUTM, A.P." },
   { "name": "Prof. Saroj Kumar Sahoo", "affiliation": "CUTM, Bhubaneswar" },
   { "name": "Prof. Rasmi Ranjan Swain", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Prof. P. Anuradha", "affiliation": "CUTM, A.P." }
+  { "name": "Prof. (Dr.) P. Anuradha", "affiliation": "CUTM, A.P." }
 ];
 
 
