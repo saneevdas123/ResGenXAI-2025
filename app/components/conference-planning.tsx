@@ -10,8 +10,8 @@ export default function Conference() {
   })
 
 const committeeMembers = [
-  { "name": "Prof. Sangram Keshari Swain", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. Satyasis Mishra", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" }
+  { "name": "Prof. (Dr.) Sangram Keshari Swain", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. (Dr.) Satyasis Mishra", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" }
 ];
 
 
