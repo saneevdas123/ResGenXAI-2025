@@ -28,7 +28,7 @@ export default function OrganizingCommittee() {
     {
       name: "Sujit Bebortta",
       role: "Organizing Secretary",
-      affiliation: "SoA University, Bhubaneswar, Odisha, India",
+      affiliation: "Ravenshaw University, Cuttack, Odisha, India",
     },
   ]
 
