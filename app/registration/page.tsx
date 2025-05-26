@@ -1,6 +1,4 @@
-// app/registration/page.tsx
 "use client"
-
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Header from "../components/header"
@@ -10,10 +8,10 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
-import { Upload, FileText, Users, CreditCard, CheckCircle } from "lucide-react"
+import { Upload, FileText, Users, CreditCard, CheckCircle, Loader2, AlertCircle } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 
 declare global {
   interface Window {
@@ -44,6 +42,20 @@ interface RegistrationFormData {
   paymentProof?: File
   ieeeProof?: File
 }
+
+const COUNTRIES = [
+  "Afghanistan", "Albania", "Algeria", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+  "Bahrain", "Bangladesh", "Belarus", "Belgium", "Bolivia", "Bosnia and Herzegovina", "Brazil", "Bulgaria",
+  "Cambodia", "Canada", "Chile", "China", "Colombia", "Costa Rica", "Croatia", "Cyprus", "Czech Republic",
+  "Denmark", "Dominican Republic", "Ecuador", "Egypt", "Estonia", "Ethiopia", "Finland", "France",
+  "Georgia", "Germany", "Ghana", "Greece", "Guatemala", "Hungary", "Iceland", "India", "Indonesia",
+  "Iran", "Iraq", "Ireland", "Israel", "Italy", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kuwait",
+  "Latvia", "Lebanon", "Lithuania", "Luxembourg", "Malaysia", "Mexico", "Morocco", "Netherlands",
+  "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Portugal",
+  "Qatar", "Romania", "Russia", "Saudi Arabia", "Singapore", "Slovakia", "Slovenia", "South Africa",
+  "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland", "Thailand", "Turkey", "Ukraine",
+  "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Venezuela", "Vietnam"
+]
 
 const PRICING = {
   student: {
@@ -81,74 +93,160 @@ export default function RegistrationPage() {
 
   const [currentStep, setCurrentStep] = useState(1)
   const [loading, setLoading] = useState(false)
+  const [paymentLoading, setPaymentLoading] = useState(false)
+  const [uploadLoading, setUploadLoading] = useState(false)
   const [calculatedFee, setCalculatedFee] = useState(0)
   const [currency, setCurrency] = useState("INR")
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [razorpayLoaded, setRazorpayLoaded] = useState(false)
+  
   const router = useRouter()
   const { toast } = useToast()
 
-  // Load Razorpay script
   useEffect(() => {
     const script = document.createElement("script")
     script.src = "https://checkout.razorpay.com/v1/checkout.js"
     script.async = true
+    script.onload = () => setRazorpayLoaded(true)
+    script.onerror = () => {
+      toast({
+        title: "Error",
+        description: "Failed to load payment gateway. Please refresh the page.",
+        variant: "destructive"
+      })
+    }
     document.body.appendChild(script)
     return () => {
-      document.body.removeChild(script)
+      if (document.body.contains(script)) {
+        document.body.removeChild(script)
+      }
     }
   }, [])
 
-  // Calculate registration fee based on selections
   useEffect(() => {
     if (formData.category && formData.ieeeStatus && formData.nationality) {
-      const categoryKey = formData.category.toLowerCase() as keyof typeof PRICING
-      const ieeeKey = formData.ieeeStatus === "yes" ? "ieee" : "nonIeee"
-      const nationalityKey = formData.nationality === "national" ? "national" : "international"
-      
-      if (formData.category.toLowerCase().includes("attendee")) {
-        const fee = PRICING[categoryKey].attendee[nationalityKey]
-        setCalculatedFee(fee)
-        setCurrency(nationalityKey === "national" ? "INR" : "USD")
-      } else {
-        const fee = PRICING[categoryKey][ieeeKey][nationalityKey]
-        setCalculatedFee(fee)
-        setCurrency(nationalityKey === "national" ? "INR" : "USD")
+      try {
+        const categoryKey = formData.category.toLowerCase().replace(/^attendee-/, '') as keyof typeof PRICING
+        const ieeeKey = formData.ieeeStatus === "yes" ? "ieee" : "nonIeee"
+        const nationalityKey = formData.nationality === "national" ? "national" : "international"
+        
+        if (formData.category.toLowerCase().includes("attendee")) {
+          const fee = PRICING[categoryKey].attendee[nationalityKey]
+          setCalculatedFee(fee)
+          setCurrency(nationalityKey === "national" ? "INR" : "USD")
+        } else {
+          const fee = PRICING[categoryKey][ieeeKey][nationalityKey]
+          setCalculatedFee(fee)
+          setCurrency(nationalityKey === "national" ? "INR" : "USD")
+        }
+      } catch (error) {
+        console.error("Fee calculation error:", error)
+        toast({
+          title: "Error",
+          description: "Failed to calculate registration fee. Please try again.",
+          variant: "destructive"
+        })
       }
     }
   }, [formData.category, formData.ieeeStatus, formData.nationality])
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
+  const validatePhone = (phone: string) => {
+    const phoneRegex = /^\+?[\d\s\-\(\)]{10,15}$/
+    return phoneRegex.test(phone.replace(/\s/g, ''))
+  }
+
   const handleInputChange = (name: string, value: string) => {
     setFormData(prev => ({ ...prev, [name]: value }))
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }))
+    }
   }
 
   const handleFileChange = (name: string, file: File) => {
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "Error",
+        description: "File size must be less than 5MB",
+        variant: "destructive"
+      })
+      return
+    }
+
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf']
+    if (!allowedTypes.includes(file.type)) {
+      toast({
+        title: "Error",
+        description: "Only JPG, PNG, and PDF files are allowed",
+        variant: "destructive"
+      })
+      return
+    }
+
     setFormData(prev => ({ ...prev, [name]: file }))
   }
 
   const uploadToS3 = async (file: File, fileName: string) => {
-    const formData = new FormData()
-    formData.append('file', file)
-    formData.append('fileName', fileName)
+    setUploadLoading(true)
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append('fileName', fileName)
 
-    const response = await fetch('/api/upload', {
-      method: 'POST',
-      body: formData,
-    })
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      })
 
-    if (!response.ok) throw new Error('Upload failed')
-    return await response.json()
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Upload failed')
+      }
+      
+      return await response.json()
+    } catch (error) {
+      console.error('Upload error:', error)
+      throw error
+    } finally {
+      setUploadLoading(false)
+    }
   }
 
   const validateStep = (step: number) => {
+    const newErrors: Record<string, string> = {}
+
     switch (step) {
       case 1:
-        return formData.participantName && formData.email && formData.mobileNumber && formData.country
+        if (!formData.participantName.trim()) newErrors.participantName = "Name is required"
+        if (!formData.email.trim()) newErrors.email = "Email is required"
+        else if (!validateEmail(formData.email)) newErrors.email = "Invalid email format"
+        if (!formData.mobileNumber.trim()) newErrors.mobileNumber = "Mobile number is required"
+        else if (!validatePhone(formData.mobileNumber)) newErrors.mobileNumber = "Invalid mobile number"
+        if (!formData.whatsappNumber.trim()) newErrors.whatsappNumber = "WhatsApp number is required"
+        else if (!validatePhone(formData.whatsappNumber)) newErrors.whatsappNumber = "Invalid WhatsApp number"
+        if (!formData.country.trim()) newErrors.country = "Country is required"
+        break
       case 2:
-        return formData.category && formData.ieeeStatus && formData.nationality
+        if (!formData.category) newErrors.category = "Category is required"
+        if (!formData.ieeeStatus) newErrors.ieeeStatus = "IEEE status is required"
+        if (!formData.nationality) newErrors.nationality = "Nationality is required"
+        if (formData.ieeeStatus === "yes" && !formData.ieeeProof) {
+          newErrors.ieeeProof = "IEEE membership proof is required"
+        }
+        break
       case 3:
-        return formData.paperId && formData.copyrightAgreement && formData.presentationMode
-      default:
-        return true
+        if (!formData.paperId.trim()) newErrors.paperId = "Paper ID is required"
+        if (!formData.copyrightAgreement) newErrors.copyrightAgreement = "Copyright agreement status is required"
+        if (!formData.presentationMode) newErrors.presentationMode = "Presentation mode is required"
+        break
     }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
   }
 
   const handleNextStep = () => {
@@ -156,25 +254,42 @@ export default function RegistrationPage() {
       setCurrentStep(prev => prev + 1)
     } else {
       toast({
-        title: "Error",
-        description: "Please fill in all required fields",
+        title: "Validation Error",
+        description: "Please fill in all required fields correctly",
         variant: "destructive"
       })
     }
   }
 
   const handlePayment = async () => {
-    setLoading(true)
+    if (!razorpayLoaded) {
+      toast({
+        title: "Error",
+        description: "Payment gateway is still loading. Please wait a moment.",
+        variant: "destructive"
+      })
+      return
+    }
+
+    if (!validateStep(3)) {
+      toast({
+        title: "Validation Error",
+        description: "Please complete all required fields",
+        variant: "destructive"
+      })
+      return
+    }
+
+    setPaymentLoading(true)
     
     try {
-      // Upload files to S3
       let paymentProofUrl = ""
       let ieeeProofUrl = ""
 
       if (formData.paymentProof) {
         const paymentResult = await uploadToS3(
           formData.paymentProof, 
-          `payment-${Date.now()}-${formData.participantName}`
+          `payment-${Date.now()}-${formData.participantName.replace(/\s+/g, '-')}`
         )
         paymentProofUrl = paymentResult.url
       }
@@ -182,12 +297,11 @@ export default function RegistrationPage() {
       if (formData.ieeeProof) {
         const ieeeResult = await uploadToS3(
           formData.ieeeProof, 
-          `ieee-${Date.now()}-${formData.participantName}`
+          `ieee-${Date.now()}-${formData.participantName.replace(/\s+/g, '-')}`
         )
         ieeeProofUrl = ieeeResult.url
       }
 
-      // Create order
       const orderResponse = await fetch('/api/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -211,7 +325,6 @@ export default function RegistrationPage() {
         throw new Error(orderData.error || 'Failed to create order')
       }
 
-      // Initialize Razorpay
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: orderData.amount,
@@ -220,8 +333,9 @@ export default function RegistrationPage() {
         description: "Conference Registration",
         order_id: orderData.id,
         handler: async (response: any) => {
+          setPaymentLoading(true)
+          
           try {
-            // Verify payment
             const verifyResponse = await fetch('/api/verify-payment', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -244,25 +358,34 @@ export default function RegistrationPage() {
             if (verifyResponse.ok) {
               toast({
                 title: "Success!",
-                description: "Registration completed successfully. Confirmation email sent!"
+                description: "Registration completed successfully. Redirecting..."
               })
-              router.push('/registration/success')
+              
+              setTimeout(() => {
+                router.push(`/registration/success?registrationId=${verifyData.registrationId}`)
+              }, 1500)
             } else {
               throw new Error(verifyData.error || 'Payment verification failed')
             }
           } catch (error) {
             console.error('Payment verification error:', error)
+            setPaymentLoading(false)
             toast({
               title: "Error",
-              description: "Payment verification failed. Please contact support.",
+              description: "Payment verification failed. Please contact support with your payment ID.",
               variant: "destructive"
             })
+          }
+        },
+        modal: {
+          ondismiss: () => {
+            setPaymentLoading(false)
           }
         },
         prefill: {
           name: formData.participantName,
           email: formData.email,
-          contact: formData.mobileNumber
+          contact: formData.mobileNumber.replace(/\D/g, '')
         },
         theme: {
           color: "#E65100"
@@ -270,19 +393,43 @@ export default function RegistrationPage() {
       }
 
       const razorpay = new window.Razorpay(options)
+      razorpay.on('payment.failed', function (response: any) {
+        setPaymentLoading(false)
+        toast({
+          title: "Payment Failed",
+          description: response.error.description || "Payment was unsuccessful. Please try again.",
+          variant: "destructive"
+        })
+      })
+      
       razorpay.open()
 
     } catch (error) {
       console.error('Payment error:', error)
       toast({
         title: "Error",
-        description: "Failed to initiate payment. Please try again.",
+        description: error instanceof Error ? error.message : "Failed to initiate payment. Please try again.",
         variant: "destructive"
       })
     } finally {
-      setLoading(false)
+      if (!paymentLoading) {
+        setPaymentLoading(false)
+      }
     }
   }
+
+  // Loading overlay component
+  const LoadingOverlay = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-8 rounded-lg shadow-lg text-center max-w-sm mx-4">
+        <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
+        <h3 className="text-lg font-semibold mb-2">Processing Payment</h3>
+        <p className="text-gray-600">
+          Please wait while we process your registration and payment. Do not close this window.
+        </p>
+      </div>
+    </div>
+  )
 
   const renderStep = () => {
     switch (currentStep) {
@@ -304,8 +451,11 @@ export default function RegistrationPage() {
                   value={formData.participantName}
                   onChange={(e) => handleInputChange("participantName", e.target.value)}
                   placeholder="Your full name"
-                  required
+                  className={errors.participantName ? "border-red-500" : ""}
                 />
+                {errors.participantName && (
+                  <p className="text-sm text-red-500">{errors.participantName}</p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -316,8 +466,11 @@ export default function RegistrationPage() {
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   placeholder="your.email@example.com"
-                  required
+                  className={errors.email ? "border-red-500" : ""}
                 />
+                {errors.email && (
+                  <p className="text-sm text-red-500">{errors.email}</p>
+                )}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -328,8 +481,11 @@ export default function RegistrationPage() {
                     value={formData.mobileNumber}
                     onChange={(e) => handleInputChange("mobileNumber", e.target.value)}
                     placeholder="+91 1234567890"
-                    required
+                    className={errors.mobileNumber ? "border-red-500" : ""}
                   />
+                  {errors.mobileNumber && (
+                    <p className="text-sm text-red-500">{errors.mobileNumber}</p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -339,20 +495,31 @@ export default function RegistrationPage() {
                     value={formData.whatsappNumber}
                     onChange={(e) => handleInputChange("whatsappNumber", e.target.value)}
                     placeholder="+91 1234567890"
-                    required
+                    className={errors.whatsappNumber ? "border-red-500" : ""}
                   />
+                  {errors.whatsappNumber && (
+                    <p className="text-sm text-red-500">{errors.whatsappNumber}</p>
+                  )}
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="country">Your Country *</Label>
-                <Input
-                  id="country"
-                  value={formData.country}
-                  onChange={(e) => handleInputChange("country", e.target.value)}
-                  placeholder="India"
-                  required
-                />
+                <Select value={formData.country} onValueChange={(value) => handleInputChange("country", value)}>
+                  <SelectTrigger className={errors.country ? "border-red-500" : ""}>
+                    <SelectValue placeholder="Select your country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {COUNTRIES.map((country) => (
+                      <SelectItem key={country} value={country}>
+                        {country}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {errors.country && (
+                  <p className="text-sm text-red-500">{errors.country}</p>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -374,6 +541,7 @@ export default function RegistrationPage() {
                 <RadioGroup
                   value={formData.category}
                   onValueChange={(value) => handleInputChange("category", value)}
+                  className={errors.category ? "border border-red-500 p-3 rounded" : ""}
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="student" id="student" />
@@ -400,6 +568,9 @@ export default function RegistrationPage() {
                     <Label htmlFor="attendee-industry">Attendee - Industry</Label>
                   </div>
                 </RadioGroup>
+                {errors.category && (
+                  <p className="text-sm text-red-500">{errors.category}</p>
+                )}
               </div>
 
               <div className="space-y-3">
@@ -407,6 +578,7 @@ export default function RegistrationPage() {
                 <RadioGroup
                   value={formData.ieeeStatus}
                   onValueChange={(value) => handleInputChange("ieeeStatus", value)}
+                  className={errors.ieeeStatus ? "border border-red-500 p-3 rounded" : ""}
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="yes" id="ieee-yes" />
@@ -414,15 +586,18 @@ export default function RegistrationPage() {
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="no" id="ieee-no" />
-                    <Label htmlFor="ieee-no">No</Label>
+                    <Label htmlFor="no">No</Label>
                   </div>
                 </RadioGroup>
+                {errors.ieeeStatus && (
+                  <p className="text-sm text-red-500">{errors.ieeeStatus}</p>
+                )}
               </div>
 
               {formData.ieeeStatus === "yes" && (
                 <div className="space-y-2">
-                  <Label htmlFor="ieeeProof">IEEE Membership Proof</Label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+                  <Label htmlFor="ieeeProof">IEEE Membership Proof *</Label>
+                  <div className={`border-2 border-dashed rounded-lg p-4 ${errors.ieeeProof ? "border-red-500" : "border-gray-300"}`}>
                     <div className="text-center">
                       <Upload className="mx-auto h-12 w-12 text-gray-400" />
                       <div className="mt-4">
@@ -430,6 +605,7 @@ export default function RegistrationPage() {
                           <span className="mt-2 block text-sm font-medium text-gray-900">
                             Upload IEEE Membership Certificate
                           </span>
+                          <span className="text-xs text-gray-500">PDF, JPG, PNG (Max 5MB)</span>
                           <input
                             id="ieeeProof"
                             type="file"
@@ -438,9 +614,17 @@ export default function RegistrationPage() {
                             onChange={(e) => e.target.files?.[0] && handleFileChange("ieeeProof", e.target.files[0])}
                           />
                         </label>
+                        {formData.ieeeProof && (
+                          <p className="text-sm text-green-600 mt-2">
+                            ✓ {formData.ieeeProof.name}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
+                  {errors.ieeeProof && (
+                    <p className="text-sm text-red-500">{errors.ieeeProof}</p>
+                  )}
                 </div>
               )}
 
@@ -449,6 +633,7 @@ export default function RegistrationPage() {
                 <RadioGroup
                   value={formData.nationality}
                   onValueChange={(value) => handleInputChange("nationality", value)}
+                  className={errors.nationality ? "border border-red-500 p-3 rounded" : ""}
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="national" id="national" />
@@ -459,6 +644,9 @@ export default function RegistrationPage() {
                     <Label htmlFor="international">International</Label>
                   </div>
                 </RadioGroup>
+                {errors.nationality && (
+                  <p className="text-sm text-red-500">{errors.nationality}</p>
+                )}
               </div>
 
               {calculatedFee > 0 && (
@@ -491,8 +679,11 @@ export default function RegistrationPage() {
                   value={formData.paperId}
                   onChange={(e) => handleInputChange("paperId", e.target.value)}
                   placeholder="e.g., PID001"
-                  required
+                  className={errors.paperId ? "border-red-500" : ""}
                 />
+                {errors.paperId && (
+                  <p className="text-sm text-red-500">{errors.paperId}</p>
+                )}
               </div>
 
               <div className="space-y-3">
@@ -500,6 +691,7 @@ export default function RegistrationPage() {
                 <RadioGroup
                   value={formData.copyrightAgreement}
                   onValueChange={(value) => handleInputChange("copyrightAgreement", value)}
+                  className={errors.copyrightAgreement ? "border border-red-500 p-3 rounded" : ""}
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="yes" id="copyright-yes" />
@@ -510,6 +702,9 @@ export default function RegistrationPage() {
                     <Label htmlFor="copyright-no">No</Label>
                   </div>
                 </RadioGroup>
+                {errors.copyrightAgreement && (
+                  <p className="text-sm text-red-500">{errors.copyrightAgreement}</p>
+                )}
               </div>
 
               <div className="space-y-3">
@@ -517,6 +712,7 @@ export default function RegistrationPage() {
                 <RadioGroup
                   value={formData.presentationMode}
                   onValueChange={(value) => handleInputChange("presentationMode", value)}
+                  className={errors.presentationMode ? "border border-red-500 p-3 rounded" : ""}
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="online" id="online" />
@@ -527,6 +723,9 @@ export default function RegistrationPage() {
                     <Label htmlFor="physical">Physical Mode</Label>
                   </div>
                 </RadioGroup>
+                {errors.presentationMode && (
+                  <p className="text-sm text-red-500">{errors.presentationMode}</p>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -547,15 +746,34 @@ export default function RegistrationPage() {
                 <h3 className="font-semibold">Registration Summary</h3>
                 <p><strong>Name:</strong> {formData.participantName}</p>
                 <p><strong>Email:</strong> {formData.email}</p>
+                <p><strong>Country:</strong> {formData.country}</p>
                 <p><strong>Category:</strong> {formData.category}</p>
-                <p><strong>IEEE Member:</strong> {formData.ieeeStatus}</p>
+                <p><strong>IEEE Member:</strong> {formData.ieeeStatus === 'yes' ? 'Yes' : 'No'}</p>
                 <p><strong>Nationality:</strong> {formData.nationality}</p>
                 <p><strong>Paper ID:</strong> {formData.paperId}</p>
+                <p><strong>Presentation Mode:</strong> {formData.presentationMode}</p>
                 <p className="text-lg font-bold text-primary">
                   <strong>Total Fee: {calculatedFee} {currency}</strong>
                 </p>
               </div>
 
+              {!razorpayLoaded && (
+                <Alert>
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>
+                    Loading payment gateway... Please wait.
+                  </AlertDescription>
+                </Alert>
+              )}
+
+              {uploadLoading && (
+                <Alert>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <AlertDescription>
+                    Uploading files... Please don't close this window.
+                  </AlertDescription>
+                </Alert>
+              )}
             </CardContent>
           </Card>
         )
@@ -568,6 +786,8 @@ export default function RegistrationPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-orange-50">
       <Header />
+      
+      {paymentLoading && <LoadingOverlay />}
       
       <section className="pb-20 relative overflow-hidden">
         <div className="container mx-auto px-4">
@@ -611,20 +831,54 @@ export default function RegistrationPage() {
               <Button
                 variant="outline"
                 onClick={() => setCurrentStep(prev => prev - 1)}
-                disabled={currentStep === 1}
+                disabled={currentStep === 1 || loading || paymentLoading}
               >
                 Previous
               </Button>
 
               {currentStep < 4 ? (
-                <Button onClick={handleNextStep}>
-                  Next
+                <Button 
+                  onClick={handleNextStep}
+                  disabled={loading || paymentLoading}
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                      Loading...
+                    </>
+                  ) : (
+                    "Next"
+                  )}
                 </Button>
               ) : (
-                <Button onClick={handlePayment} disabled={loading}>
-                  {loading ? "Processing..." : `Pay ${calculatedFee} ${currency}`}
+                <Button 
+                  onClick={handlePayment} 
+                  disabled={loading || paymentLoading || !razorpayLoaded}
+                  className="min-w-[200px]"
+                >
+                  {paymentLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                      Processing...
+                    </>
+                  ) : !razorpayLoaded ? (
+                    "Loading Payment..."
+                  ) : (
+                    `Pay ${calculatedFee} ${currency}`
+                  )}
                 </Button>
               )}
+            </div>
+
+            {/* Important Notes */}
+            <div className="mt-8 max-w-2xl mx-auto">
+              <Alert>
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>
+                  <strong>Important:</strong> Please ensure all information is correct before proceeding to payment. 
+                  Registration details cannot be modified after successful payment.
+                </AlertDescription>
+              </Alert>
             </div>
           </div>
         </div>

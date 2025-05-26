@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
 
     const allRegistrations = await registrations.find({}).toArray()
 
-    // Format data for export
     const exportData = allRegistrations.map(reg => ({
       'Registration ID': reg.registrationId,
       'Name': reg.participantName,
