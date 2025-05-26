@@ -22,7 +22,7 @@ export default function RegistrationSuccess() {
     <main className="min-h-screen bg-gradient-to-b from-white to-orange-50">
       <Header />
       
-      <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pb-20 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             

@@ -556,28 +556,6 @@ export default function RegistrationPage() {
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="paymentProof">Upload Payment Proof (Optional)</Label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
-                  <div className="text-center">
-                    <Upload className="mx-auto h-12 w-12 text-gray-400" />
-                    <div className="mt-4">
-                      <label htmlFor="paymentProof" className="cursor-pointer">
-                        <span className="mt-2 block text-sm font-medium text-gray-900">
-                          Upload Payment Screenshot
-                        </span>
-                        <input
-                          id="paymentProof"
-                          type="file"
-                          className="sr-only"
-                          accept=".pdf,.jpg,.jpeg,.png"
-                          onChange={(e) => e.target.files?.[0] && handleFileChange("paymentProof", e.target.files[0])}
-                        />
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </CardContent>
           </Card>
         )
@@ -591,7 +569,7 @@ export default function RegistrationPage() {
     <main className="min-h-screen bg-gradient-to-b from-white to-orange-50">
       <Header />
       
-      <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pb-20 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Progress Steps */}
