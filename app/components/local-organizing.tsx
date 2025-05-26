@@ -31,7 +31,7 @@ const committeeMembers = [
   { "name": "Dr. N.V.S. Shankar", "affiliation": "CUTM, A.P." },
   { "name": "Prof. Saroj Kumar Sahoo", "affiliation": "CUTM, Bhubaneswar" },
   { "name": "Prof. Rasmi Ranjan Swain", "affiliation": "CUTM, Bhubaneswar" },
-  { "name": "Dr. P. Anuradha", "affiliation": "CUTM, A.P." }
+  { "name": "Prof. P. Anuradha", "affiliation": "CUTM, A.P." }
 ];
 
 
