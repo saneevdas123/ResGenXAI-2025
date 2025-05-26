@@ -789,7 +789,7 @@ export default function RegistrationPage() {
       
       {paymentLoading && <LoadingOverlay />}
       
-      <section className="pb-20 relative overflow-hidden">
+      <section className="pb-20 pt-10 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Progress Steps */}
