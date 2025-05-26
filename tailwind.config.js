@@ -2,11 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-    "*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
   theme: {
     container: {
@@ -24,22 +23,21 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#E65100", // Odisha temple orange/saffron
-          foreground: "#ffffff",
-          50: "#FFF3E0",
-          100: "#FFE0B2",
-          200: "#FFCC80",
-          300: "#FFB74D",
-          400: "#FFA726",
-          500: "#FF9800",
-          600: "#FB8C00",
-          700: "#F57C00",
-          800: "#EF6C00",
-          900: "#E65100",
+          DEFAULT: "#E65100",
+          50: "#FFE0B2",
+          100: "#FFCC80",
+          200: "#FFB74D",
+          300: "#FFA726",
+          400: "#FF9800",
+          500: "#FF8F00",
+          600: "#FF6F00",
+          700: "#E65100",
+          800: "#BF360C",
+          900: "#DD2C00",
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#01579B", // Deep blue inspired by Odisha coastal waters
-          foreground: "#ffffff",
+          DEFAULT: "#01579B",
           50: "#E1F5FE",
           100: "#B3E5FC",
           200: "#81D4FA",
@@ -50,75 +48,50 @@ module.exports = {
           700: "#0288D1",
           800: "#0277BD",
           900: "#01579B",
+          foreground: "#FFFFFF",
         },
-        accent: {
-          DEFAULT: "#8D6E63", // Earthy brown from temple stone
-          foreground: "#ffffff",
-        },
+        "temple-gold": "#FFC107",
         destructive: {
-          DEFAULT: "#FF5722",
-          foreground: "#ffffff",
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "#f1f5f9",
-          foreground: "#64748b",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
-        jagannath: {
-          red: "#D32F2F",
-          yellow: "#FFB300",
-          black: "#212121",
-          white: "#FAFAFA",
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
-        temple: {
-          stone: "#A1887F",
-          sand: "#D7CCC8",
-          gold: "#FFC107",
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
       },
-      fontFamily: {
-        sans: ["var(--font-sans)"],
-        serif: ["var(--font-serif)"],
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        fadeIn: {
-          from: { opacity: "0", transform: "translateY(10px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        pulse: {
-          "0%, 100%": { opacity: 0.6 },
-          "50%": { opacity: 0.8 },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
         },
       },
       animation: {
-        fadeIn: "fadeIn 0.5s ease-out forwards",
-        float: "float 6s ease-in-out infinite",
-        pulse: "pulse 3s ease-in-out infinite",
-        "spin-slow": "spin 20s linear infinite",
-        "spin-slow-reverse": "spin 15s linear infinite reverse",
-      },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            a: {
-              color: theme("colors.primary.DEFAULT"),
-              "&:hover": {
-                color: theme("colors.primary.DEFAULT"),
-                opacity: 0.8,
-              },
-            },
-          },
-        },
-      }),
-      backgroundImage: {
-        "pattachitra-pattern": "url('/pattachitra-bg.png')",
-        "temple-pattern": "url('/temple-pattern.png')",
-        "konark-wheel": "url('/konark-wheel.png')",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("tailwindcss-animate")],
 }
