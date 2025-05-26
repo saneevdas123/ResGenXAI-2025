@@ -10,10 +10,10 @@ export default function Keynote() {
   })
 
 const committeeMembers = [
-  { "name": "Prof. (Dr.) Rajendra Kumar Khadanga", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Nimay Chandra Giri", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Chinmayee Dora", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Swarna Prabha Jena", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" }
+  { "name": "Dr. Rajendra Kumar Khadanga", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Dr. Nimay Chandra Giri", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Dr. Chinmayee Dora", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Dr. Swarna Prabha Jena", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" }
 ];
 
 
