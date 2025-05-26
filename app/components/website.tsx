@@ -11,29 +11,19 @@ export default function Publicity() {
 
 const committeeMembers = [
   {
-    name: "Dr. Chiranji Lal Chowdhary",
-    role: "Publicity Chair",
-    affiliation: "Vellore Institute of Technology, Vellore, India",
-  },
-  {
-    name: "Dr. Ramesh Chandra Mohanty",
-    role: "Publicity Chair",
+    name: "Tanmay Kumar Panda",
+    role: "Website Chair",
     affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
   },
   {
-    name: "Dr. Subhranshu Sekhar Tripathy",
-    role: "Publicity Chair",
-    affiliation: "KIIT Deemed to be University, Bhubaneswar, Odisha, India",
+    name: "Aniket Subudhi",
+    role: "Website Chair",
+    affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
   },
-  {
-    name: "Dr. Vandana Sharma",
-    role: "Publicity Chair",
-    affiliation: "CHRIST (Deemed to be University), Delhi-NCR, India",
-  },
-  {
-    name: "Dr. Niranjan Ray",
-    role: "Publicity Chair",
-    affiliation: "KIIT Deemed to be University, Bhubaneswar, Odisha, India",
+   {
+    name: "Basir Khan",
+    role: "Website Chair",
+    affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
   },
 ];
 
@@ -53,7 +43,7 @@ const committeeMembers = [
             <div className="relative flex justify-center">
               <span className="bg-orange-50 px-6 text-2xl font-bold text-primary flex items-center">
                 <Newspaper className="w-6 h-6 mr-2" />
-                Publicity Commitee
+                Website Committee
               </span>
             </div>
           </div>

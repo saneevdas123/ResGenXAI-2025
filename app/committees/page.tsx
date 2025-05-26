@@ -13,6 +13,7 @@ import Sponsorship from "../components/sponsorship"
 import Publication from "../components/publication"
 import Conference from "../components/conference-planning"
 import Local from "../components/local-organizing"
+import Website from "../components/website"
 
 export default function CommitteesPage() {
   return (
@@ -30,6 +31,7 @@ export default function CommitteesPage() {
       <Publication/>
       <Conference/>
       <Local/>
+      <Website/>
       <TechnicalCommittee/>
       <Footer />
     </main>

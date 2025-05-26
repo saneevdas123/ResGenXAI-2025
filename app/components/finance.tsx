@@ -10,7 +10,7 @@ export default function Finance() {
   })
 
  const committeeMembers = [
-  { "name": "Prof. Sudhansu Kumar Samal", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
+  { "name": "Dr. Sudhansu Kumar Samal", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" },
   { "name": "Prof. Rakesh Kumar Ray", "affiliation": "Centurion University of Technology and Management, Bhubaneswar, Odisha, India" }
 ];
 
