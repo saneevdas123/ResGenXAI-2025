@@ -16,7 +16,7 @@ const committeeMembers = [
   { "name": "Prof. (Dr.) Bharati Mishra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
   { "name": "Prof. (Dr.) Renu Sharma", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
   { "name": "Prof. (Dr.) Satyabrata Dash", "affiliation": "GITAM University, A.P., India" },
-  { "name": "Prof. (Dr.) Tanmay Mukherjee", "affiliation": "SoA University, Bhubaneswar, Odisha, India"}
+  { "name": "Dr. Tanmay Mukherjee", "affiliation": "SoA University, Bhubaneswar, Odisha, India"}
 
 ];
 
