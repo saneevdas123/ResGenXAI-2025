@@ -10,13 +10,13 @@ export default function Panel() {
   })
 
 const committeeMembers = [
-  { "name": "Prof. (Dr.) Puspanjali Mohapatra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Ranjeeta Patel", "affiliation": "KIIT Deemed to be University, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Umamani Subudhi", "affiliation": "KIIT Deemed to be University, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Bharati Mishra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Renu Sharma", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Satyabrata Dash", "affiliation": "GITAM University, A.P., India" },
-  { "name": "Prof. (Dr.) Tanmay Mukherjee", "affiliation": "SoA University, Bhubaneswar, Odisha, India"}
+  { "name": "Dr. Puspanjali Mohapatra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
+  { "name": "Dr. Ranjeeta Patel", "affiliation": "KIIT Deemed to be University, Bhubaneswar, Odisha, India" },
+  { "name": "Dr. Umamani Subudhi", "affiliation": "KIIT Deemed to be University, Bhubaneswar, Odisha, India" },
+  { "name": "Dr. Bharati Mishra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
+  { "name": "Dr. Renu Sharma", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
+  { "name": "Dr. Satyabrata Dash", "affiliation": "GITAM University, A.P., India" },
+  { "name": "Dr. Tanmay Mukherjee", "affiliation": "SoA University, Bhubaneswar, Odisha, India"}
 
 ];
 
