@@ -11,12 +11,12 @@ export default function Publicity() {
 
 const committeeMembers = [
   {
-    name: "Prof.(Dr.) Chiranji Lal Chowdhary",
+    name: "Dr. Chiranji Lal Chowdhary",
     role: "Publicity Chair",
     affiliation: "Vellore Institute of Technology, Vellore, India",
   },
   {
-    name: "Prof.(Dr.) Ramesh Chandra Mohanty",
+    name: "Dr. Ramesh Chandra Mohanty",
     role: "Publicity Chair",
     affiliation: "Centurion University of Technology and Management, Bhubaneswar, Odisha, India",
   },
