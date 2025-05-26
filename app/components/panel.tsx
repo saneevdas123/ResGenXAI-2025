@@ -10,11 +10,11 @@ export default function Panel() {
   })
 
 const committeeMembers = [
+  { "name": "Prof. (Dr.) Renu Sharma", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
   { "name": "Prof. (Dr.) Puspanjali Mohapatra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
   { "name": "Prof. (Dr.) Ranjeeta Patel", "affiliation": "KIIT Deemed to be University, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Umamani Subudhi", "affiliation": "KIIT Deemed to be University, Bhubaneswar, Odisha, India" },
+  { "name": "Prof. (Dr.) Umamani Subudhi", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
   { "name": "Prof. (Dr.) Bharati Mishra", "affiliation": "IIIT, Bhubaneswar, Odisha, India" },
-  { "name": "Prof. (Dr.) Renu Sharma", "affiliation": "SoA University, Bhubaneswar, Odisha, India" },
   { "name": "Prof. (Dr.) Satyabrata Dash", "affiliation": "GITAM University, A.P., India" },
   { "name": "Prof. (Dr.) Tanmay Mukherjee", "affiliation": "SoA University, Bhubaneswar, Odisha, India"}
 
