@@ -14,18 +14,18 @@ export default function Registration() {
 
   const registrationData = {
     student: [
-      { category: "IEEE Members - Student / Research Scholar", national: "6,500 INR", international: "350 USD" },
-      { category: "Non Members - Student / Research Scholar", national: "7,500 INR", international: "450 USD" },
-      { category: "Attendee - Student / Research Scholar", national: "1,000 INR", international: "120 USD" },
+      { category: "IEEE Members - Student / Research Scholar", national: "6,500 INR", international: "250 USD" },
+      { category: "Non Members - Student / Research Scholar", national: "7,500 INR", international: "350 USD" },
+      { category: "Attendee - Student / Research Scholar", national: "1,000 INR", international: "100 USD" },
     ],
     academician: [
-      { category: "IEEE Members - Academician", national: "7,500 INR", international: "450 USD" },
-      { category: "Non Members - Academician", national: "8,500 INR", international: "550 USD" },
-      { category: "Attendee - Academician", national: "1,500 INR", international: "150 USD" },
+      { category: "IEEE Members - Academician", national: "7,500 INR", international: "350 USD" },
+      { category: "Non Members - Academician", national: "8,500 INR", international: "400 USD" },
+      { category: "Attendee - Academician", national: "1,500 INR", international: "120 USD" },
     ],
     industry: [
-      { category: "IEEE Members - Industry", national: "8,500 INR", international: "450 USD" },
-      { category: "Non Members - Industry", national: "9,500 INR", international: "550 USD" },
+      { category: "IEEE Members - Industry", national: "8,500 INR", international: "350 USD" },
+      { category: "Non Members - Industry", national: "9,500 INR", international: "400 USD" },
       { category: "Attendee - Industry", national: "1,500 INR", international: "150 USD" },
     ],
   }
