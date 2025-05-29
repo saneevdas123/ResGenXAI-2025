@@ -60,7 +60,7 @@ const COUNTRIES = [
 const PRICING = {
   student: {
     ieee: { national: 6500, international: 250 },
-    nonIeee: { national: 7500, international: 350 },
+    nonIeee: { national: 7500, international: 300 },
     attendee: { national: 1000, international: 100 }
   },
   academician: {
