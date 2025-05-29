@@ -15,7 +15,7 @@ export default function Registration() {
   const registrationData = {
     student: [
       { category: "IEEE Members - Student / Research Scholar", national: "6,500 INR", international: "250 USD" },
-      { category: "Non Members - Student / Research Scholar", national: "7,500 INR", international: "350 USD" },
+      { category: "Non Members - Student / Research Scholar", national: "7,500 INR", international: "300 USD" },
       { category: "Attendee - Student / Research Scholar", national: "1,000 INR", international: "100 USD" },
     ],
     academician: [
