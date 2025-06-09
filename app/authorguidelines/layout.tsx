@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Author Guidelines | ResGenXAI 2025",
     description: "Comprehensive instructions for preparing and submitting your research paper to ResGenXAI 2025. IEEE formatting requirements, submission process, and publication guidelines.",
-    url: "https://www.resgenxai.co.in/author-guidelines",
+    url: "https://www.resgenxai.co.in/authorguidelines",
     images: [
       {
         url: "/favicon.png",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://www.resgenxai.co.in/author-guidelines",
+    canonical: "https://www.resgenxai.co.in/authorguidelines",
   },
 }
 

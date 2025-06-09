@@ -48,7 +48,7 @@
       "name": "Author Guidelines",
       "short_name": "Guidelines",
       "description": "View author guidelines",
-      "url": "/author-guidelines",
+      "url": "/authorguidelines",
       "icons": [{ "src": "/shortcut-guidelines.png", "sizes": "192x192" }]
     },
     {
