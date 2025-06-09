@@ -25,8 +25,8 @@ export default function Header() {
       name: "Guidelines",
       href: "#",
       submenu: [
-        { name: "Author Guidelines", href: "/author-guidelines" },
-        { name: "Reviewer Guidelines", href: "/reviewer-guidelines" },
+        { name: "Author Guidelines", href: "/authorguidelines" },
+        { name: "Reviewer Guidelines", href: "/reviewerguidelines" },
       ],
     },
     { name: "Attend", href: "#",

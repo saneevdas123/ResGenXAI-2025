@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Reviewer Guidelines | ResGenXAI 2025",
     description: "Guidelines and expectations for reviewers of ResGenXAI 2025 submissions. Reviewing process, qualification requirements, and ethical standards for evaluating AI research papers.",
-    url: "https://www.resgenxai.co.in/reviewer-guidelines",
+    url: "https://www.resgenxai.co.in/reviewerguidelines",
     images: [
       {
         url: "/favicon.png",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://www.resgenxai.co.in/reviewer-guidelines",
+    canonical: "https://www.resgenxai.co.in/",
   },
 }
 
