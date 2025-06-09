@@ -27,12 +27,6 @@ export default function NotFound() {
               </Button>
             </Link>
             
-            <Link href="/registration">
-              <Button variant="outline" className="w-full" size="lg">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Conference Registration
-              </Button>
-            </Link>
           </div>
           
           <div className="pt-4 border-t">

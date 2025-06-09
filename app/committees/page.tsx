@@ -23,12 +23,12 @@ export default function CommitteesPage() {
       <Patrons />
       <HonoraryCommittee/>
       <OrganizingCommittee/>
+      <Publication/>
       <Panel/>
       <Finance/>
       <Publicity/>
       <Keynote/>
       <Sponsorship/>
-      <Publication/>
       <Conference/>
       <Local/>
       <Website/>

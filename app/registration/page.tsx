@@ -59,14 +59,14 @@ const COUNTRIES = [
 
 const PRICING = {
   student: {
-    ieee: { national: 6500, international: 350 },
-    nonIeee: { national: 7500, international: 450 },
-    attendee: { national: 1000, international: 120 }
+    ieee: { national: 6500, international: 250 },
+    nonIeee: { national: 7500, international: 300 },
+    attendee: { national: 1000, international: 100 }
   },
   academician: {
-    ieee: { national: 7500, international: 450 },
-    nonIeee: { national: 8500, international: 550 },
-    attendee: { national: 1500, international: 150 }
+    ieee: { national: 7500, international: 350 },
+    nonIeee: { national: 8500, international: 400 },
+    attendee: { national: 1500, international: 120 }
   },
   industry: {
     ieee: { national: 8500, international: 450 },
@@ -789,7 +789,7 @@ export default function RegistrationPage() {
       
       {paymentLoading && <LoadingOverlay />}
       
-      <section className="pb-20 relative overflow-hidden">
+      <section className="pb-20 pt-10 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Progress Steps */}
