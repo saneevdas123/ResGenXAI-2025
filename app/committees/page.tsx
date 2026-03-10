@@ -32,7 +32,6 @@ export default function CommitteesPage() {
       <Conference/>
       <Local/>
       <Website/>
-      <TechnicalCommittee/>
       <Footer />
     </main>
   )
